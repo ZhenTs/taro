@@ -1,0 +1,75 @@
+/*
+ * 改变主题变量，具体变量名可查看 taro-ui/dist/style/variables/default.scss 文件
+ * 或者访问 https://github.com/NervJS/taro-ui/blob/dev/src/style/variables/default.scss
+ */
+
+/* 主题色
+-------------------------- */
+$color-brand: #0099FF !default;
+$color-brand-light: #4CB8FF !default;
+$color-brand-dark: #346FC2 !default;
+
+/* 背景色
+-------------------------- */
+$bg-color-white: #fff !default;
+$bg-color-gray: #f5f6fa !default;
+
+/* 文字色
+-------------------------- */
+$color-black: #333 !default;
+$color-darkgray: #999 !default;
+$color-gray: #aaa !default;
+$color-lightgray: #ddd !default;
+
+/* 文字色
+-------------------------- */
+$color-border-light:$color-lightgray !default;
+
+/* methods
+-------------------------- */
+// 背景图片地址和大小
+@mixin bg($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+// 定位上下左右居中
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 定位上下居中
+@mixin ct {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// 定位左右居中
+@mixin cl {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// 字体大小，颜色
+@mixin sc($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+// flex 布局和 子元素 对其方式
+@mixin fj($type: space-between) {
+  display: flex;
+  justify-content: $type;
+}

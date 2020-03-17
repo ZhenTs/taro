@@ -1,0 +1,18 @@
+@import '../../styles/mixin';
+
+.login-page{
+  @include wh(100%, 100%);
+
+  .btn-submit{
+    margin-top: 100px;
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  .icon{
+    padding-top: 100px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+}

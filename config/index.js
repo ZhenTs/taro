@@ -8,7 +8,7 @@ const config = {
     '828': 1.81 / 2,
   },
   sourceRoot: 'src',
-  outputRoot: `dist/${process.env.TARO_ENV}`,
+  outputRoot: `dist/${process.env.TARO_ENV}`,// 输出目录根据环境区分，可实现多端同时调试
   babel: {
     sourceMap: true,
     presets: [
@@ -28,7 +28,7 @@ const config = {
         'polyfill': false,
         'regenerator': true,
         'moduleName': 'babel-runtime',
-      }],
+      }],//支持异步编程
     ],
   },
   plugins: [],
@@ -76,6 +76,7 @@ const config = {
         },
       },
     },
+    esnextModules: ['taro-ui']// 不配置的话h5样式可能有问题
   },
 }
 

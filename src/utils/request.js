@@ -35,20 +35,19 @@ const interceptor = function (chain) {
     })
 }
 
-const logRequest = function ({ method, data, url, /* header */ }) {
-  console.log(LOG_TAG, `--> ${method.toUpperCase() || 'GET'} ${url} `)
+const logRequest = function ({ method, data, url /* header */ }) {
+  console.log(LOG_TAG, `--> ${method && method.toUpperCase() || 'GET'} ${url} `)
   // for (let key in header) {
   //   console.log(LOG_TAG, `${key}:${header[key]}`)
   // }
   data && console.log(LOG_TAG, ' ' + JSON.stringify(data))
-  console.log(LOG_TAG, `--> END ${method.toUpperCase() || 'GET'}`)
+  console.log(LOG_TAG, `--> END ${method && method.toUpperCase() || 'GET'}`)
 }
 const logResponse = function ({ url }, res) {
   console.log(LOG_TAG, `<-- ${res.statusCode || res.status} ${url}`)
   res.data && console.log(LOG_TAG, ' ' + JSON.stringify(res.data))
   console.log(LOG_TAG, `<-- END HTTP`)
 }
-
 
 const processErrorMessage = function (statusCode) {
   if (statusCode >= 400 && statusCode < 500) {
@@ -160,6 +159,7 @@ const refreshToken = function () {
 }
 
 const request = (url, options = { method: 'GET', header: {}, contentType: 'application/json' }) => {
+  console.log(options)
   return Taro.request({
     url: url.startsWith('http') ? url : apiConfig.host + url,
     method: options.method || 'GET',

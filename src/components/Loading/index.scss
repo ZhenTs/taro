@@ -1,0 +1,26 @@
+@import '../../styles/mixin';
+
+.loading {
+  @include center();
+  @include wh(100%,100%);
+  z-index: 999999;
+  background: transparent;
+
+  .container{
+    @include center();
+    @include wh(120px,120px);
+    background: $color-black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .text{
+    color:white;
+    margin-top: 10px;
+    line-height: normal;
+    font-size: 22px;
+  }
+
+}
