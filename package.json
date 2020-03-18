@@ -25,10 +25,30 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
-    "tep": "node template"
+    "tep": "node template",
+    "prettier": "prettier \"./**/*.js\" --write"
   },
   "author": "",
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": false,
+    "jsxBracketSameLine": true,
+    "jsxSingleQuote": true,
+    "parser": "flow"
+  },
   "dependencies": {
     "@tarojs/components": "2.0.6",
     "@tarojs/components-qa": "2.0.6",
@@ -75,6 +95,9 @@
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-taro": "2.0.6",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1",
     "stylelint": "9.3.0",
     "stylelint-config-taro-rn": "2.0.6",
     "stylelint-taro-rn": "2.0.6"
