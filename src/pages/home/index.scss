@@ -1,0 +1,10 @@
+@import '../../styles/mixin';
+
+.home-page {
+  @include wh(100%, 100%);
+
+  .scrollview{
+    height: 500px;
+    background: #0099FF;
+  }
+}

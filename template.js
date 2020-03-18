@@ -23,6 +23,11 @@ import './index.scss';
 }))
 export default class ${titleCase(dirName)} extends Component {
 
+  constructor (props) {
+    super(props)
+    
+  }
+  
   componentWillMount () {
 
   }

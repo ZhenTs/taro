@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import * as loginApi from './service'
 
 export default {
@@ -11,6 +12,9 @@ export default {
   effects: {
     * login ({ payload }, { call, put }) {
       try {
+        yield new Promise(resolve => {
+          setTimeout(()=>resolve(),2000);
+        })
         const { access_token, refresh_token } = yield call(loginApi.login, {
           // ...payload,
           userName:'superadmin',
@@ -23,6 +27,7 @@ export default {
             refresh_token,
           },
         })
+        Taro.switchTab({url:'/pages/home/index'})
       } catch (e) {
         yield put({
           type: 'save',

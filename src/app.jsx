@@ -20,9 +20,12 @@ const store = dvaApp.getStore()
 
 class App extends Component {
 
-  componentDidMount () {}
+  componentDidMount () {
+    Taro.switchTab({url:'/pages/home/index'})
+  }
 
-  componentDidShow () {}
+  componentDidShow () {
+  }
 
   componentDidHide () {}
 
@@ -36,7 +39,8 @@ class App extends Component {
       'pages/mine/index',
     ],
     window: {
-      backgroundTextStyle: 'light',
+      backgroundColor:'#f5f6fa',
+      backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black',

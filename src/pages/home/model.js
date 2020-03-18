@@ -1,25 +1,28 @@
-import * as homeApi from './service';
+import * as homeApi from './service'
 
 export default {
   namespace: 'home',
-  state: {
-  },
-  
+  state: {},
+
   effects: {
-    * effectsDemo({ payload }, { call, put }) {
-      const { status, data } = yield call(homeApi.demo, {});
-      if (status === 'ok') {
-        yield put({ type: 'save',
-          payload: {
-            topData: data,
-          } });
-      }
+    * fetchData ({ payload,callback }, { call, put }) {
+      yield new Promise(resolve => {
+        setTimeout(() => resolve(), 2000)
+      })
+
+      yield put({
+        type: 'save',
+        payload: {
+          noMore: true,
+        },
+      })
+      callback&&callback()
     },
   },
-  
+
   reducers: {
-    save(state, { payload }) {
-      return { ...state, ...payload };
+    save (state, { payload }) {
+      return { ...state, ...payload }
     },
   },
-};
+}

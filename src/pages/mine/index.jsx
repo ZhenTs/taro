@@ -1,9 +1,9 @@
-import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
-import { connect } from '@tarojs/redux';
-import './index.scss';
+import Taro, { Component } from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
+import './index.scss'
 
-@connect(({mine}) => ({
+@connect(({ mine }) => ({
   ...mine,
 }))
 export default class Mine extends Component {
@@ -24,9 +24,9 @@ export default class Mine extends Component {
 
   config = {
     navigationBarTitleText: 'mine',
-  };
+  }
 
-  render() {
+  render () {
     return (
       <View className='mine-page'>
         mine

@@ -1,0 +1,17 @@
+@import '../../styles/mixin';
+
+.load-more {
+  @include wh(100%, 100px);
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .text {
+    color: $color-darkgray;
+    margin-left: 20px;
+    line-height: normal;
+    font-size: 24px;
+  }
+}

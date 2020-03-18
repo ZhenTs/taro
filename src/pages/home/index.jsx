@@ -1,10 +1,13 @@
-import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
-import { connect } from '@tarojs/redux';
-import './index.scss';
+import Taro, { Component } from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
+import './index.scss'
+import LoadMore from '../../components/LoadMore/LoadMore'
+import Loading from '../../components/Loading/Loading'
 
-@connect(({home}) => ({
+@connect(({ home, loading }) => ({
   ...home,
+  loading: loading.models.home,
 }))
 export default class Home extends Component {
 
@@ -13,7 +16,12 @@ export default class Home extends Component {
   }
 
   componentDidMount () {
-
+    this.props.dispatch&&this.props.dispatch({
+      type: 'home/fetchData',
+      callback:()=>{
+        Taro.showToast({title:'test'})
+      }
+    })
   }
 
   componentWillUnmount () { }
@@ -23,13 +31,24 @@ export default class Home extends Component {
   componentDidHide () { }
 
   config = {
+    enablePullDownRefresh: true,
     navigationBarTitleText: 'home',
-  };
+    backgroundTextStyle: 'dark',
+  }
 
-  render() {
+  onPullDownRefresh () {
+
+  }
+
+  onReachBottom () {
+
+  }
+
+  render () {
     return (
       <View className='home-page'>
-        home
+        <Loading loading={this.props.loading} inline />
+        <LoadMore loading={this.props.loading} noMore={this.props.noMore}/>
       </View>
     )
   }
