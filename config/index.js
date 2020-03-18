@@ -8,7 +8,7 @@ const config = {
     '828': 1.81 / 2,
   },
   sourceRoot: 'src',
-  outputRoot: `dist/${process.env.TARO_ENV}`,// 输出目录根据环境区分，可实现多端同时调试
+  outputRoot: `dist/${process.env.TARO_ENV}`, // 输出目录根据环境区分，可实现多端同时调试
   babel: {
     sourceMap: true,
     presets: [
@@ -23,12 +23,15 @@ const config = {
       'transform-decorators-legacy',
       'transform-class-properties',
       'transform-object-rest-spread',
-      ['transform-runtime', {
-        'helpers': false,
-        'polyfill': false,
-        'regenerator': true,
-        'moduleName': 'babel-runtime',
-      }],//支持异步编程
+      [
+        'transform-runtime',
+        {
+          helpers: false,
+          polyfill: false,
+          regenerator: true,
+          moduleName: 'babel-runtime',
+        },
+      ], //支持异步编程
     ],
   },
   plugins: [],
@@ -61,11 +64,7 @@ const config = {
       autoprefixer: {
         enable: true,
         config: {
-          browsers: [
-            'last 3 versions',
-            'Android >= 4.1',
-            'ios >= 8',
-          ],
+          browsers: ['last 3 versions', 'Android >= 4.1', 'ios >= 8'],
         },
       },
       cssModules: {
@@ -76,13 +75,13 @@ const config = {
         },
       },
     },
-    esnextModules: ['taro-ui']// 不配置的话h5样式可能有问题
+    esnextModules: ['taro-ui'], // 不配置的话h5样式可能有问题
   },
-}
+};
 
-module.exports = function (merge) {
+module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+    return merge({}, config, require('./dev'));
   }
-  return merge({}, config, require('./prod'))
-}
+  return merge({}, config, require('./prod'));
+};

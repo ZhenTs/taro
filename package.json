@@ -26,7 +26,8 @@
     "dev:qq": "npm run build:qq -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "tep": "node template",
-    "prettier": "prettier \"./**/*.js\" --write"
+    "prettier": "prettier \"./**/*.js\" --write",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "MIT",
@@ -36,8 +37,9 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write",
+      "eslint",
       "git add"
     ]
   },
@@ -46,8 +48,7 @@
     "trailingComma": "all",
     "bracketSpacing": false,
     "jsxBracketSameLine": true,
-    "jsxSingleQuote": true,
-    "parser": "flow"
+    "jsxSingleQuote": true
   },
   "dependencies": {
     "@tarojs/components": "2.0.6",

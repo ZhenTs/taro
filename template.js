@@ -91,7 +91,6 @@ export default {
 };
 `;
 
-
 // service页面模版
 const serviceTep = `import request from '../../utils/request';
 
@@ -100,8 +99,6 @@ export const demo = data => request('url',{
   data,
 });
 `;
-
-
 
 fs.mkdirSync(`./${dirName}`); // mkdir $1
 process.chdir(`./${dirName}`); // cd $1
@@ -116,7 +113,8 @@ console.log(`模版${dirName}已创建,请手动增加models`);
 function titleCase(str) {
   const array = str.toLowerCase().split(' ');
   for (let i = 0; i < array.length; i++) {
-    array[i] = array[i][0].toUpperCase() + array[i].substring(1, array[i].length);
+    array[i] =
+      array[i][0].toUpperCase() + array[i].substring(1, array[i].length);
   }
   const string = array.join(' ');
   return string;
