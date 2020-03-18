@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 import { AtInput, AtButton, AtIcon } from 'taro-ui'
 import { connect } from '@tarojs/redux'
 import './index.scss'
-import Loading from '../../components/Loading/Loading'
+import Loading from '../../components/base/Loading/Loading'
 
 @connect(({ login, loading }) => ({
   ...login,

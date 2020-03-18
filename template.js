@@ -103,8 +103,8 @@ export const demo = data => request('url',{
 
 
 
-fs.mkdirSync(`./src/pages/${dirName}`); // mkdir $1
-process.chdir(`./src/pages/${dirName}`); // cd $1
+fs.mkdirSync(`./${dirName}`); // mkdir $1
+process.chdir(`./${dirName}`); // cd $1
 
 fs.writeFileSync('index.jsx', indexTep);
 fs.writeFileSync('index.scss', scssTep);

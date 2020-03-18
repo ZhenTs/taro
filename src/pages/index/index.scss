@@ -1,0 +1,14 @@
+@import '../../styles/mixin';
+
+.index-page {
+  @include wh(100%, 100%);
+
+  .container{
+    @include wh(100%, 100%);
+  }
+  .tabbar{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
+}

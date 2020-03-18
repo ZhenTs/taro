@@ -1,13 +1,13 @@
-import * as mineApi from './service';
+import * as serviceApi from './service';
 
 export default {
-  namespace: 'mine',
+  namespace: 'service',
   state: {
   },
 
   effects: {
     * effectsDemo({ payload }, { call, put }) {
-      const { status, data } = yield call(mineApi.demo, {});
+      const { status, data } = yield call(serviceApi.demo, {});
       if (status === 'ok') {
         yield put({ type: 'save',
           payload: {

@@ -1,68 +1,130 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import { AtTabBar } from 'taro-ui'
+import { View, ScrollView } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
+
+import ServiceTab from '../service/components/tab'
+import OrderTab from '../order/components/tab'
+import MineTab from '../mine/components/tab'
+
 import './index.scss'
-import request from '../../utils/request'
+import serviceImg from '../../images/tab/service.png'
+import serviceSelectedImg from '../../images/tab/service.selected.png'
+import orderImg from '../../images/tab/order.png'
+import orderSelectedImg from '../../images/tab/order.selected.png'
+import mineImg from '../../images/tab/mine.png'
+import mineSelectedImg from '../../images/tab/mine.selected.png'
 
-export default class Index extends Component {
+const customerTabList = [
+  {
+    title: '服务',
+    image: serviceImg,
+    selectedImage: serviceSelectedImg,
+  },
+  {
+    title: '订单',
+    image: orderImg,
+    selectedImage: orderSelectedImg,
+  },
+  {
+    title: '我的',
+    image: mineImg,
+    selectedImage: mineSelectedImg,
+  },
+]
 
-  componentWillMount () {
+const employeeTabList = [
+  {
+    title: '订单',
+    image: orderImg,
+    selectedImage: orderSelectedImg,
+  },
+  {
+    title: '我的',
+    image: mineImg,
+    selectedImage: mineSelectedImg,
+  },
+]
 
-  }
-
-  componentDidMount () {
-
-  }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  config = {
-    navigationBarTitleText: '首页',
-  }
-
-  onLogin = async () => {
-    request('connect/token', {
-      method: 'post',
-      contentType: 'application/x-www-form-urlencoded',
-      data: {
-        client_id: '70d8bb06-0254-43f2-a371-0e1b2be932b0',
-        client_secret: '830c409d-0f16-4c44-9eac-60e0f28d1bf7',
-        grant_type: 'password',
-        password: '17c4520f6cfd1ab53d8745e84681eb49',
-        userName: 'superadmin',
-      },
-    }).then(result => {
-      console.log('最终结果', result)
-      Taro.setStorageSync('access_token', result.access_token)
-      Taro.setStorageSync('refresh_token', result.refresh_token)
-    }).catch(error => {
-      console.log('最终错误', error)
-    })
-  }
-
-  onRefresh = async () => {
-    try {
-      request('user/getuserinfo', { data: { id: 1 } }).then(res => {
-        console.log('1', res)
-      })
-
-      request('user/getuserinfo', { data: { id: 1 } }).then(res => {
-        console.log('2', res)
-      })
-    } catch (e) {
-      console.log('错误', e)
+@connect(({ common, service, order, mine, loading }) => ({
+  common,
+  service,
+  order,
+  mine,
+  loading: loading.models,
+}))
+export default class Index extends Taro.Component {
+  constructor () {
+    super(...arguments)
+    this.state = {
+      current: 0,
+      loginType: this.props.common.loginType || 'customer',
     }
   }
 
+  componentDidMount () {
+    this.handleNavigationBarTitle(0)
+  }
+
+  handleNavigationBarTitle (value) {
+    const { loginType } = this.state
+    if (loginType === 'customer') {
+      Taro.setNavigationBarTitle({ title: customerTabList[value].title })
+    } else {
+      Taro.setNavigationBarTitle({ title: employeeTabList[value].title })
+    }
+  }
+
+  handleClick (value) {
+    const { loginType } = this.state
+    if (loginType === 'customer') {
+      Taro.setNavigationBarTitle({ title: customerTabList[value].title })
+    } else {
+      Taro.setNavigationBarTitle({ title: employeeTabList[value].title })
+    }
+    this.setState({
+      current: value,
+    })
+  }
+
+  renderCurrent () {
+    let currentTab
+    const { current, loginType } = this.state
+    if (loginType === 'customer') {
+      if (current === 0) {
+        currentTab = <ServiceTab/>
+      } else if (current === 1) {
+        currentTab = <OrderTab/>
+      } else {
+        currentTab = <MineTab/>
+      }
+    } else {
+      if (current === 0) {
+        currentTab = <OrderTab/>
+      } else {
+        currentTab = <MineTab/>
+      }
+    }
+    return currentTab
+  }
+
   render () {
+
     return (
-      <View className='index'>
-        <Button onClick={this.onLogin}>测试登录</Button>
-        <Button onClick={this.onRefresh}>测试刷新token</Button>
+      <View className='index-page'>
+        <ScrollView className='container'>
+          {this.renderCurrent()}
+        </ScrollView>
+        <AtTabBar
+          fixed
+          iconSize={24}
+          selectedColor='#CF0000'
+          tabList={this.state.loginType === 'customer' ? customerTabList : employeeTabList}
+          onClick={this.handleClick.bind(this)}
+          current={this.state.current}
+        />
       </View>
+
     )
   }
 }

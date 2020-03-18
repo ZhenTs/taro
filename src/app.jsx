@@ -18,10 +18,12 @@ const dvaApp = dva.createApp({
 })
 const store = dvaApp.getStore()
 
+const commonState=store.getState().common
+
 class App extends Component {
 
   componentDidMount () {
-    Taro.switchTab({url:'/pages/home/index'})
+    // Taro.switchTab({url:'/pages/home/index'})
   }
 
   componentDidShow () {
@@ -33,10 +35,8 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/login/index',
-      'pages/home/index',
       'pages/index/index',
-      'pages/mine/index',
+      'pages/login/index',
     ],
     window: {
       backgroundColor:'#f5f6fa',
@@ -45,23 +45,13 @@ class App extends Component {
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black',
     },
-    tabBar: {
-      list: [{
-        pagePath: 'pages/home/index',
-        text: '首页',
-        iconPath: './images/tab/home.png',
-        selectedIconPath: './images/tab/home_selected.png',
-      }, {
-        pagePath: 'pages/mine/index',
-        text: '我的',
-        iconPath: './images/tab/mine.png',
-        selectedIconPath: './images/tab/mine_selected.png',
-      }],
-      color: '#333',
-      selectedColor: '#d81e06',
-      backgroundColor: '#fff',
-      borderStyle: 'black',
-    },
+    // tabBar: {
+    //   list: tabList,
+    //   color: '#333',
+    //   selectedColor: '#d81e06',
+    //   backgroundColor: '#fff',
+    //   borderStyle: 'black',
+    // },
   }
 
   // 在 App 类中的 render() 函数没有实际作用

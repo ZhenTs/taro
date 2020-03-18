@@ -3,10 +3,14 @@ import { View } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import './index.scss'
 
-@connect(({ mine }) => ({
-  ...mine,
+@connect(({ service }) => ({
+  ...service,
 }))
-export default class Mine extends Component {
+export default class Tab extends Component {
+
+  constructor (props) {
+    super(props)
+  }
 
   componentWillMount () {
 
@@ -23,13 +27,13 @@ export default class Mine extends Component {
   componentDidHide () { }
 
   config = {
-    navigationBarTitleText: 'mine',
+    navigationBarTitleText: 'tab',
   }
 
   render () {
     return (
-      <View className='mine-page'>
-        mine
+      <View className='tab-page'>
+        service tab
       </View>
     )
   }

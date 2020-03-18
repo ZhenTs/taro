@@ -1,13 +1,13 @@
-import * as mineApi from './service';
+import * as orderApi from './service';
 
 export default {
-  namespace: 'mine',
+  namespace: 'order',
   state: {
   },
 
   effects: {
     * effectsDemo({ payload }, { call, put }) {
-      const { status, data } = yield call(mineApi.demo, {});
+      const { status, data } = yield call(orderApi.demo, {});
       if (status === 'ok') {
         yield put({ type: 'save',
           payload: {
