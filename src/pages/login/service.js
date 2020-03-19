@@ -1,4 +1,4 @@
-import request from '../../utils/request';
+import request from '../../utils/request'
 
 export const login = data =>
   request('connect/token', {
@@ -9,6 +9,6 @@ export const login = data =>
       client_secret: '830c409d-0f16-4c44-9eac-60e0f28d1bf7',
       grant_type: 'password',
       password: data.password,
-      userName: data.userName,
-    },
-  });
+      userName: data.userName
+    }
+  })

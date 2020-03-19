@@ -1,6 +1,7 @@
 {
   "extends": [
-    "taro"
+    "taro",
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "no-unused-vars": [

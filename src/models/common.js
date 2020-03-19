@@ -1,17 +1,17 @@
-import Taro from '@tarojs/taro';
+import Taro from '@tarojs/taro'
 
 export default {
   namespace: 'common',
   state: {
     access_token: Taro.getStorageSync('access_token'),
-    loginType: 'customer', //employee
+    loginType: 'customer' //employee
   },
 
   effects: {},
 
   reducers: {
-    save(state, {payload}) {
-      return {...state, ...payload};
-    },
-  },
-};
+    save(state, { payload }) {
+      return { ...state, ...payload }
+    }
+  }
+}

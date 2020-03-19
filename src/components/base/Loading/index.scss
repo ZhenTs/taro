@@ -2,13 +2,13 @@
 
 .loading-mask {
   @include center();
-  @include wh(100%,100%);
+  @include wh(100%, 100%);
   z-index: 999999;
   background: transparent;
 
-  .container{
+  .container {
     @include center();
-    @include wh(120px,120px);
+    @include wh(120px, 120px);
     background: rgba(17, 17, 17, 0.8);
     border-radius: 20px;
     display: flex;
@@ -16,29 +16,29 @@
     justify-content: center;
     align-items: center;
   }
-  .text{
-    color:white;
+  .text {
+    color: white;
     margin-top: 10px;
     line-height: normal;
     font-size: 22px;
   }
 }
 
-.loading-view{
+.loading-view {
   @include center();
-  @include wh(100%,100%);
+  @include wh(100%, 100%);
   z-index: 999999;
   background: white;
 
-  .container{
+  .container {
     @include center();
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .text{
-    color:$color-black;
+  .text {
+    color: $color-black;
     margin-top: 10px;
     line-height: normal;
     font-size: 22px;

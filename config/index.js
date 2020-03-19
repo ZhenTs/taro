@@ -5,7 +5,7 @@ const config = {
   deviceRatio: {
     '640': 2.34 / 2,
     '750': 1,
-    '828': 1.81 / 2,
+    '828': 1.81 / 2
   },
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV}`, // 输出目录根据环境区分，可实现多端同时调试
@@ -15,9 +15,9 @@ const config = {
       [
         'env',
         {
-          modules: false,
-        },
-      ],
+          modules: false
+        }
+      ]
     ],
     plugins: [
       'transform-decorators-legacy',
@@ -29,10 +29,10 @@ const config = {
           helpers: false,
           polyfill: false,
           regenerator: true,
-          moduleName: 'babel-runtime',
-        },
-      ], //支持异步编程
-    ],
+          moduleName: 'babel-runtime'
+        }
+      ] //支持异步编程
+    ]
   },
   plugins: [],
   defineConstants: {},
@@ -40,22 +40,22 @@ const config = {
     postcss: {
       pxtransform: {
         enable: true,
-        config: {},
+        config: {}
       },
       url: {
         enable: true,
         config: {
-          limit: 10240, // 设定转换尺寸上限
-        },
+          limit: 10240 // 设定转换尺寸上限
+        }
       },
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: 'module', // 转换模式，取值为 global/module
-          generateScopedName: '[name]__[local]___[hash:base64:5]',
-        },
-      },
-    },
+          generateScopedName: '[name]__[local]___[hash:base64:5]'
+        }
+      }
+    }
   },
   h5: {
     publicPath: '/',
@@ -64,24 +64,24 @@ const config = {
       autoprefixer: {
         enable: true,
         config: {
-          browsers: ['last 3 versions', 'Android >= 4.1', 'ios >= 8'],
-        },
+          browsers: ['last 3 versions', 'Android >= 4.1', 'ios >= 8']
+        }
       },
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: 'module', // 转换模式，取值为 global/module
-          generateScopedName: '[name]__[local]___[hash:base64:5]',
-        },
-      },
+          generateScopedName: '[name]__[local]___[hash:base64:5]'
+        }
+      }
     },
-    esnextModules: ['taro-ui'], // 不配置的话h5样式可能有问题
-  },
-};
+    esnextModules: ['taro-ui'] // 不配置的话h5样式可能有问题
+  }
+}
 
 module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'));
+    return merge({}, config, require('./dev'))
   }
-  return merge({}, config, require('./prod'));
-};
+  return merge({}, config, require('./prod'))
+}

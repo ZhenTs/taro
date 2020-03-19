@@ -1,26 +1,26 @@
-import * as mineApi from './service';
+import * as mineApi from './service'
 
 export default {
   namespace: 'mine',
   state: {},
 
   effects: {
-    *effectsDemo({payload}, {call, put}) {
-      const {status, data} = yield call(mineApi.demo, {});
+    *effectsDemo({ payload }, { call, put }) {
+      const { status, data } = yield call(mineApi.demo, {})
       if (status === 'ok') {
         yield put({
           type: 'save',
           payload: {
-            topData: data,
-          },
-        });
+            topData: data
+          }
+        })
       }
-    },
+    }
   },
 
   reducers: {
-    save(state, {payload}) {
-      return {...state, ...payload};
-    },
-  },
-};
+    save(state, { payload }) {
+      return { ...state, ...payload }
+    }
+  }
+}

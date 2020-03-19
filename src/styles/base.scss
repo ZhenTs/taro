@@ -1,7 +1,7 @@
 /* 覆写的变量，需要在引入 taro ui 默认样式之前定义 */
-@import "./mixin.scss";
+@import './mixin.scss';
 /* 引入 Taro UI 默认样式 */
-@import "~taro-ui/dist/style/index.scss";
+@import '~taro-ui/dist/style/index.scss';
 
 page,
 body {
