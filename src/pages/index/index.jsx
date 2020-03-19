@@ -1,111 +1,111 @@
-import Taro from '@tarojs/taro';
-import {AtTabBar} from 'taro-ui';
-import {View, ScrollView} from '@tarojs/components';
-import {connect} from '@tarojs/redux';
+import Taro from '@tarojs/taro'
+import { AtTabBar } from 'taro-ui'
+import { View, ScrollView } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
 
-import ServiceTab from '../service/components/tab';
-import OrderTab from '../order/components/tab';
-import MineTab from '../mine/components/tab';
+import ServiceTab from '../tab/service'
+import OrderTab from '../tab/order'
+import MineTab from '../tab/mine'
 
-import './index.scss';
-import serviceImg from '../../images/tab/service.png';
-import serviceSelectedImg from '../../images/tab/service.selected.png';
-import orderImg from '../../images/tab/order.png';
-import orderSelectedImg from '../../images/tab/order.selected.png';
-import mineImg from '../../images/tab/mine.png';
-import mineSelectedImg from '../../images/tab/mine.selected.png';
+import './index.scss'
+import serviceImg from '../../images/tab/service.png'
+import serviceSelectedImg from '../../images/tab/service.selected.png'
+import orderImg from '../../images/tab/order.png'
+import orderSelectedImg from '../../images/tab/order.selected.png'
+import mineImg from '../../images/tab/mine.png'
+import mineSelectedImg from '../../images/tab/mine.selected.png'
 
 const customerTabList = [
   {
     title: '服务',
     image: serviceImg,
-    selectedImage: serviceSelectedImg,
+    selectedImage: serviceSelectedImg
   },
   {
     title: '订单',
     image: orderImg,
-    selectedImage: orderSelectedImg,
+    selectedImage: orderSelectedImg
   },
   {
     title: '我的',
     image: mineImg,
-    selectedImage: mineSelectedImg,
-  },
-];
+    selectedImage: mineSelectedImg
+  }
+]
 
 const employeeTabList = [
   {
     title: '订单',
     image: orderImg,
-    selectedImage: orderSelectedImg,
+    selectedImage: orderSelectedImg
   },
   {
     title: '我的',
     image: mineImg,
-    selectedImage: mineSelectedImg,
-  },
-];
+    selectedImage: mineSelectedImg
+  }
+]
 
-@connect(({common, service, order, mine, loading}) => ({
+@connect(({ common, service, order, mine, loading }) => ({
   common,
   service,
   order,
   mine,
-  loading: loading.models,
+  loading: loading.models
 }))
 export default class Index extends Taro.Component {
   constructor() {
-    super(...arguments);
+    super(...arguments)
     this.state = {
       current: 0,
-      loginType: this.props.common.loginType || 'customer',
-    };
+      loginType: this.props.common.loginType || 'customer'
+    }
   }
 
   componentDidMount() {
-    this.handleNavigationBarTitle(0);
+    this.handleNavigationBarTitle(0)
   }
 
   handleNavigationBarTitle(value) {
-    const {loginType} = this.state;
+    const { loginType } = this.state
     if (loginType === 'customer') {
-      Taro.setNavigationBarTitle({title: customerTabList[value].title});
+      Taro.setNavigationBarTitle({ title: customerTabList[value].title })
     } else {
-      Taro.setNavigationBarTitle({title: employeeTabList[value].title});
+      Taro.setNavigationBarTitle({ title: employeeTabList[value].title })
     }
   }
 
   handleClick(value) {
-    const {loginType} = this.state;
+    const { loginType } = this.state
     if (loginType === 'customer') {
-      Taro.setNavigationBarTitle({title: customerTabList[value].title});
+      Taro.setNavigationBarTitle({ title: customerTabList[value].title })
     } else {
-      Taro.setNavigationBarTitle({title: employeeTabList[value].title});
+      Taro.setNavigationBarTitle({ title: employeeTabList[value].title })
     }
     this.setState({
-      current: value,
-    });
+      current: value
+    })
   }
 
   renderCurrent() {
-    let currentTab;
-    const {current, loginType} = this.state;
+    let currentTab
+    const { current, loginType } = this.state
     if (loginType === 'customer') {
       if (current === 0) {
-        currentTab = <ServiceTab />;
+        currentTab = <ServiceTab />
       } else if (current === 1) {
-        currentTab = <OrderTab />;
+        currentTab = <OrderTab />
       } else {
-        currentTab = <MineTab />;
+        currentTab = <MineTab />
       }
     } else {
       if (current === 0) {
-        currentTab = <OrderTab />;
+        currentTab = <OrderTab />
       } else {
-        currentTab = <MineTab />;
+        currentTab = <MineTab />
       }
     }
-    return currentTab;
+    return currentTab
   }
 
   render() {
@@ -125,6 +125,6 @@ export default class Index extends Taro.Component {
           current={this.state.current}
         />
       </View>
-    );
+    )
   }
 }

@@ -5,6 +5,7 @@
 const fs = require('fs')
 
 const dirName = process.argv[2]
+const noDva = process.argv[3]
 
 if (!dirName) {
   console.log('文件夹名称不能为空！')
@@ -105,8 +106,8 @@ process.chdir(`./${dirName}`) // cd $1
 
 fs.writeFileSync('index.jsx', indexTep)
 fs.writeFileSync('index.scss', scssTep)
-fs.writeFileSync('model.js', modelTep)
-fs.writeFileSync('service.js', serviceTep)
+if (!noDva) fs.writeFileSync('model.js', modelTep)
+if (!noDva) fs.writeFileSync('service.js', serviceTep)
 
 console.log(`模版${dirName}已创建,请手动增加models`)
 

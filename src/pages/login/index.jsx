@@ -7,39 +7,35 @@ import Loading from '../../components/base/Loading/Loading'
 
 @connect(({ login, loading }) => ({
   ...login,
-  loading: loading.models.login,
+  loading: loading.models.login
 }))
 export default class Login extends Component {
-  constructor () {
+  constructor() {
     super(...arguments)
     this.state = {
       userName: '',
-      password: '',
+      password: ''
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {}
 
-  }
+  componentDidMount() {}
 
-  componentDidMount () {
+  componentWillUnmount() {}
 
-  }
+  componentDidShow() {}
 
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
+  componentDidHide() {}
 
   config = {
-    navigationBarTitleText: 'login',
+    navigationBarTitleText: 'login'
   }
 
   onLogin = async () => {
     this.props.dispatch({
       type: 'login/login',
-      payload: this.state,
+      payload: this.state
     })
   }
 
@@ -47,11 +43,11 @@ export default class Login extends Component {
     let state = {}
     state[e.target.name] = value
     this.setState({
-      ...state,
+      ...state
     })
   }
 
-  render () {
+  render() {
     return (
       <View className='login-page'>
         <Loading loading={this.props.loading} />
@@ -72,7 +68,9 @@ export default class Login extends Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <AtButton className='btn-submit' type='primary' onClick={this.onLogin}>登录</AtButton>
+        <AtButton className='btn-submit' type='primary' onClick={this.onLogin}>
+          登录
+        </AtButton>
       </View>
     )
   }

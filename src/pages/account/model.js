@@ -1,12 +1,12 @@
-import * as serviceListApi from './service'
+import * as accountApi from './service'
 
 export default {
-  namespace: 'service',
+  namespace: 'account',
   state: {},
 
   effects: {
     *effectsDemo({ payload }, { call, put }) {
-      const { status, data } = yield call(serviceListApi.demo, {})
+      const { status, data } = yield call(accountApi.demo, {})
       if (status === 'ok') {
         yield put({
           type: 'save',

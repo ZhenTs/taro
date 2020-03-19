@@ -1,0 +1,5 @@
+@import '../../styles/mixin';
+
+.commission-page {
+  @include wh(100%, 100%);
+}

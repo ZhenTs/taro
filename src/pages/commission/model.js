@@ -1,12 +1,12 @@
-import * as mineApi from './service'
+import * as commissionApi from './service'
 
 export default {
-  namespace: 'mine',
+  namespace: 'commission',
   state: {},
 
   effects: {
     *effectsDemo({ payload }, { call, put }) {
-      const { status, data } = yield call(mineApi.demo, {})
+      const { status, data } = yield call(commissionApi.demo, {})
       if (status === 'ok') {
         yield put({
           type: 'save',

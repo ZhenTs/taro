@@ -1,0 +1,5 @@
+@import '../../../styles/mixin';
+
+.myAddress-page {
+  @include wh(100%, 100%);
+}

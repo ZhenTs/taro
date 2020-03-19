@@ -1,7 +1,7 @@
 import * as homeApi from './service'
 
 export default {
-  namespace: 'home',
+  namespace: 'main',
   state: {},
 
   effects: {

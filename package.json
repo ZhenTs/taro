@@ -26,7 +26,7 @@
     "dev:qq": "npm run build:qq -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "tep": "node template",
-    "prettier": "prettier \"./**/*.js\" --write",
+    "prettier": "prettier \"src/**/*.{js,jsx,scss}\" --write",
     "lint": "eslint ."
   },
   "author": "",

@@ -14,37 +14,37 @@ import models from './models'
 
 const dvaApp = dva.createApp({
   initialState: {},
-  models: models,
+  models: models
 })
 const store = dvaApp.getStore()
 
-const commonState=store.getState().common
+const commonState = store.getState().common
 
 class App extends Component {
-
-  componentDidMount () {
+  componentDidMount() {
     // Taro.switchTab({url:'/pages/home/index'})
   }
 
-  componentDidShow () {
-  }
+  componentDidShow() {}
 
-  componentDidHide () {}
+  componentDidHide() {}
 
-  componentDidCatchError () {}
+  componentDidCatchError() {}
 
   config = {
     pages: [
       'pages/index/index',
       'pages/login/index',
+      'pages/service/serviceSearch/index',
+      'pages/service/serviceConfirm/index'
     ],
     window: {
-      backgroundColor:'#f5f6fa',
+      backgroundColor: '#f5f6fa',
       backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black',
-    },
+      navigationBarTextStyle: 'black'
+    }
     // tabBar: {
     //   list: tabList,
     //   color: '#333',
@@ -56,13 +56,13 @@ class App extends Component {
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
       <Provider store={store}>
-        <Index/>
+        <Index />
       </Provider>
     )
   }
 }
 
-Taro.render(<App/>, document.getElementById('app'))
+Taro.render(<App />, document.getElementById('app'))
